@@ -8,11 +8,17 @@ import {
 import { styles } from './styles'
 import IllustrationImg from '../../assets/illustration.png'
 import ButtonIcon from '../../components/ButtonIcon'
+import { useNavigation } from '@react-navigation/native'
 
 export function SignIn() {
+    const navigation = useNavigation()
+    function handleSignIn() {
+        navigation.navigate('Home')
+    }
+
     return (
         <View style={styles.container}>
-       
+
             <Image
                 style={styles.image}
                 source={IllustrationImg}
@@ -22,7 +28,7 @@ export function SignIn() {
                 <Text style={styles.title} >
                     Conecte-se {`\n`}
                     e orgenize suas {`\n`}
-                    jogatinas 
+                    jogatinas
                 </Text>
 
                 <Text style={styles.subtitle} >
@@ -30,7 +36,9 @@ export function SignIn() {
                     favoritos com seus amigos
                 </Text>
 
-                <ButtonIcon title={'Entre com discord'} />
+                <ButtonIcon
+                    handlerSignIn={handleSignIn}
+                    title={'Entre com discord'} />
             </View>
         </View>
     )

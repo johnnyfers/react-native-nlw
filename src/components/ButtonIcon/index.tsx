@@ -1,4 +1,5 @@
 import React from 'react'
+import { RectButton, RectButtonProps } from 'react-native-gesture-handler'
 import {
     View,
     Text,
@@ -9,13 +10,16 @@ import {
 import DiscordImg from '../../assets/discord.png'
 import { styles } from './styles'
 
-type Props = {
+type Props = RectButtonProps & {
     title: string
+    handlerSignIn: ()=> void
+
 }
 
-export default function Buttondex({title}: Props) {
+export default function Buttondex({title, handlerSignIn}: Props) {
     return (
-        <TouchableOpacity
+        <RectButton
+            onPress={handlerSignIn}
             activeOpacity={0.7}
             style={styles.container}>
             <View style={styles.iconWrapper}>
@@ -25,6 +29,6 @@ export default function Buttondex({title}: Props) {
             <Text style={styles.title}>
                 {title}
             </Text>
-        </TouchableOpacity>
+        </RectButton>
     )
 }
